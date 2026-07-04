@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Description Reveal Animation */
+        .proc-v-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .proc-v-item.active .proc-v-content {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+
+        /* Vertical Progress Bar Logic */
+        .proc-v-bar-bg {
+            width: 2px;
+            height: 100%;
+            background-color: #F1F5F9;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .proc-v-bar-fill {
+            width: 2px;
+            height: 0%;
+            background-color: #3B82F6;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: height 5s linear;
+        }
+        .proc-v-item.active .proc-v-bar-fill {
+            height: 100%;
+        }
+
+        /* Title Color Transition */
+        .proc-v-title {
+            transition: color 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen p-10">
+
+    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        
+        <div class="space-y-12">
+            <div>
+                <h2 class="text-[42px] font-semibold text-[#1E293B] mb-4">
+                    How <span class="text-[#3B82F6]">I Work</span>
+                </h2>
+                <p class="text-gray-500 text-lg max-w-md">
+                    Every project follows a simple path to ensure the final design fits your goals perfectly.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="proc-v-item relative pl-10 active" data-index="0">
+                    <div class="proc-v-bar-bg"></div>
+                    <div class="proc-v-bar-fill"></div>
+                    <h3 class="proc-v-title text-2xl font-medium text-slate-900">Discovery</h3>
+                    <div class="proc-v-content">
+                        <p class="text-gray-500 text-[17px] leading-relaxed">
+                            I begin by learning about your product, your users, and your goals. This helps me understand the problem before designing the solution.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="proc-v-item relative pl-10" data-index="1">
+                    <div class="proc-v-bar-bg"></div>
+                    <div class="proc-v-bar-fill"></div>
+                    <h3 class="proc-v-title text-2xl font-medium text-gray-300">Wireframes and Flows</h3>
+                    <div class="proc-v-content">
+                        <p class="text-gray-500 text-[17px] leading-relaxed">
+                            I create simple wireframes and user flows that show how people will move through your product.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="proc-v-item relative pl-10" data-index="2">
+                    <div class="proc-v-bar-bg"></div>
+                    <div class="proc-v-bar-fill"></div>
+                    <h3 class="proc-v-title text-2xl font-medium text-gray-300">Visual Design</h3>
+                    <div class="proc-v-content">
+                        <p class="text-gray-500 text-[17px] leading-relaxed">
+                            Once the structure is clear, I design polished screens in Figma. Colors, fonts, and layouts are set to match your brand.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="proc-v-item relative pl-10" data-index="3">
+                    <div class="proc-v-bar-bg"></div>
+                    <div class="proc-v-bar-fill"></div>
+                    <h3 class="proc-v-title text-2xl font-medium text-gray-300">Prototypes</h3>
+                    <div class="proc-v-content">
+                        <p class="text-gray-500 text-[17px] leading-relaxed">
+                            I turn static designs into interactive prototypes to simulate the real experience.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="proc-v-item relative pl-10" data-index="4">
+                    <div class="proc-v-bar-bg"></div>
+                    <div class="proc-v-bar-fill"></div>
+                    <h3 class="proc-v-title text-2xl font-medium text-gray-300">Handoff</h3>
+                    <div class="proc-v-content">
+                        <p class="text-gray-500 text-[17px] leading-relaxed">
+                            I provide developers with everything they need—assets, specs, and documentation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-slate-50 rounded-[40px] p-12 flex justify-center items-center h-[500px]">
+            <img id="proc-display-img" src="https://img.freepik.com/free-vector/discovery-concept-illustration_114360-1111.jpg" 
+                 class="w-full max-w-sm transition-all duration-500" alt="Process Illustration">
+        </div>
+    </div>
+
+    <script>
+        const stepItems = document.querySelectorAll('.proc-v-item');
+        const mainImage = document.getElementById('proc-display-img');
+        
+        const images = [
+            "https://img.freepik.com/free-vector/discovery-concept-illustration_114360-1111.jpg",
+            "https://img.freepik.com/free-vector/user-flow-concept-illustration_114360-10114.jpg",
+            "https://img.freepik.com/free-vector/graphic-design-concept-illustration_114360-1114.jpg",
+            "https://img.freepik.com/free-vector/interaction-design-concept-illustration_114360-1115.jpg",
+            "https://img.freepik.com/free-vector/collaboration-concept-illustration_114360-1116.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function nextStep() {
+            // Remove active status from all
+            stepItems.forEach(item => {
+                item.classList.remove('active');
+                const title = item.querySelector('.proc-v-title');
+                title.classList.remove('text-slate-900');
+                title.classList.add('text-gray-300');
+            });
+
+            // Set current step active
+            const current = stepItems[currentIndex];
+            current.classList.add('active');
+            const currentTitle = current.querySelector('.proc-v-title');
+            currentTitle.classList.remove('text-gray-300');
+            currentTitle.classList.add('text-slate-900');
+
+            // Swap Image
+            mainImage.style.opacity = '0';
+            mainImage.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                mainImage.src = images[currentIndex];
+                mainImage.style.opacity = '1';
+                mainImage.style.transform = 'scale(1)';
+            }, 300);
+
+            // Increment index
+            currentIndex = (currentIndex + 1) % stepItems.length;
+        }
+
+        // Run initially and then every 5 seconds
+        nextStep();
+        setInterval(nextStep, 5000);
+    </script>
+
+</body>
+</html>
