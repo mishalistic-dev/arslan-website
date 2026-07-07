@@ -55,7 +55,7 @@
 
     const slides = [
         {
-          img: "images/REUTIB.png",
+          img: "assets/images/REUTIB.png",
           tags: ["Landing Page", "Responsive"], // Add your custom tags here
           title: "Automotive Battery Vent",
           link: "#project1",
