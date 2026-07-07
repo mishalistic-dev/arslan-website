@@ -155,7 +155,7 @@
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateSlider();
       }
-      
+
       function animateProgressBar() {
         if (timerInterval) clearInterval(timerInterval);
         
