@@ -69,7 +69,7 @@
           wa: "https://wa.me/987654321"
         },
         {
-            img: "assets/images/reutter",
+            img: "assets/images/reutter.png",
             tags: ["Landing Page","Responsive"], // Add your custom tags here
             title: "Automotive Battery Vent",
           link: "#project3",
@@ -190,6 +190,10 @@
               isPaused = false;
               lastTime = Date.now();
             });
+        slides.forEach(slide => {
+    const preload = new Image();
+    preload.src = slide.img;
+});
       
             updateSlider();
             animateProgressBar();
