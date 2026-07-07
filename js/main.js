@@ -55,27 +55,62 @@
 
     const slides = [
         {
-          img: "assets/images/REUTIB.png",
-          tags: ["Landing Page", "Responsive"], // Add your custom tags here
-          title: "Automotive Battery Vent",
+            img: "assets/images/mu-landingpage.png",
+            tags: ["Online Marketplace", "Multipage Website","Responsive"], // Add your custom tags here
+            title: "Lucson - Freelance Marketplace",
           link: "#project1",
           wa: "https://wa.me/123456789"
         },
         {
-          img: "https://via.placeholder.com/1200x750?text=Slide+2+E-Commerce+App",
-          tags: ["UI/UX Design", "E-Commerce", "Mobile"], // Dynamic tags for slide 2
-          title: "NextGen E-Commerce UI",
+            img: "assets/images/REUTIB.png",
+            tags: ["Multipage Website","Responsive"], // Add your custom tags here
+            title: "Reutter GmbH",
           link: "#project2",
           wa: "https://wa.me/987654321"
         },
         {
-          img: "https://via.placeholder.com/1200x750?text=Slide+3+Fintech+Dashboard",
-          tags: ["SaaS Platform", "Dashboard"], // Dynamic tags for slide 3
-          title: "SaaS Analytics Platform",
+            img: "assets/images/reutter",
+            tags: ["Landing Page","Responsive"], // Add your custom tags here
+            title: "Automotive Battery Vent",
+          link: "#project3",
+          wa: "https://wa.me/112233445"
+        },
+        {
+            img: "assets/images/payment.png",
+            tags: ["Mobile Application","Mobile Only"], // Add your custom tags here
+            title: "Secure Payment",
+          link: "#project3",
+          wa: "https://wa.me/112233445"
+        },
+        {
+            img: "assets/images/consultant.png",
+            tags: ["Multipage Website","Responsive"], // Add your custom tags here
+            title: "Empowering Legal",
+          link: "#project3",
+          wa: "https://wa.me/112233445"
+        },
+        {
+            img: "assets/images/startup.png",
+            tags: ["Landing Page","Responsive"], // Add your custom tags here
+            title: "Sell Your Startup",
+          link: "#project3",
+          wa: "https://wa.me/112233445"
+        },
+        {
+            img: "assets/images/Campuscredit.png",
+            tags: ["Saas Project","Responsive"], // Add your custom tags here
+            title: "CampusCredit",
+          link: "#project3",
+          wa: "https://wa.me/112233445"
+        },
+        {
+            img: "assets/images/coolinghoses.png",
+            tags: ["Landing Page","Responsive"], // Add your custom tags here
+            title: "Cooling Hoses and Pipes",
           link: "#project3",
           wa: "https://wa.me/112233445"
         }
-      ];
+    ];
       
       let currentIndex = 0;
       const duration = 5000; 
